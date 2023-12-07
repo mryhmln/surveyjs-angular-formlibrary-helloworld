@@ -84,12 +84,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/survey-core/defaultV2.min.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e4018a8f-4049-4aea-9458-ad8055d81024"
   }
 }
