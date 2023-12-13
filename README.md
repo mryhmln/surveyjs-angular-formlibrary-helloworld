@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## TODO
+
+1. Markdown (DONE)
+1. PDF Output (DONE)
+1. Multi language support (DONE)
+1. Document upload to S3
+1. Address validation
+1. Honeycrisp/USWDS styling
+1. Server side rendering (may not be spring boot compatible)

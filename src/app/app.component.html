@@ -1,1 +1,2 @@
-<app-survey></app-survey>
+<app-header (localeChanged)="changeLocale($event)"></app-header>
+<app-survey [locale]="locale" ></app-survey>
