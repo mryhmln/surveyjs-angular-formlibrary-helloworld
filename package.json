@@ -22,8 +22,8 @@
     "mailgun.js": "^9.3.0",
     "rxjs": "~7.8.0",
     "showdown": "^2.1.0",
-    "survey-angular-ui": "^1.9.119",
-    "survey-pdf": "^1.9.120",
+    "survey-angular-ui": "latest",
+    "survey-pdf": "latest",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
