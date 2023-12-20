@@ -15,6 +15,15 @@ const pdfDocOptions: IDocOptions = { /* ... */ };
 
 const converter = new Converter();
 
+function doMarkdown(survey: any, options: any) {
+  var str = converter.makeHtml(options.text);
+  // remove root paragraphs <p></p>
+  str = str.substring(3);
+  str = str.substring(0, str.length - 4);
+  // set html
+  options.html = str;
+};
+
 @Component({
   selector: 'app-survey',
   standalone: true,
@@ -32,17 +41,16 @@ export class SurveyComponent  {
 
   surveyModel!: Model;
 
-  savePdf (sender: { data: any; }) {
+  savePdf (sender: any, options: any ) {
     console.log('savePdf start');
 
     const surveyPdf = new SurveyPDF(surveyJson, pdfDocOptions);
     surveyPdf.mode = "display"; //read-only
 
-    sender.data.locale = this.locale;
-/*
-    sender.data.onTextMarkdown.add(this.doMarkdown);
-    sender.data.applyTheme(themeJson);
-  */
+    surveyPdf.locale = sender.locale;
+    console.log("pdf locale:"+ surveyPdf.locale);
+
+    surveyPdf.onTextMarkdown.add(doMarkdown);
 
     surveyPdf.data = sender.data;
     surveyPdf.save();
@@ -57,22 +65,25 @@ export class SurveyComponent  {
     options.html = str;
   };
 
-  ngOnChanges() {
+  ngOnInit() {
     const survey = new Model(surveyJson);
 
-    //set the current locale
-    survey.locale = this.locale;
-    console.log('ngOnChanges: locale='+ survey.locale);
-
     //set the markdown renderer
-    survey.onTextMarkdown.add(this.doMarkdown);
+    survey.onTextMarkdown.add(doMarkdown);
 
     const theme: ITheme = themeJson as ITheme;
     survey.applyTheme(theme);
 
-    this.surveyModel = survey;
     survey.onComplete.add(this.savePdf);
+
+    this.surveyModel = survey;
   }
+
+  ngOnChanges() {
+        //set the current locale
+        this.surveyModel.locale = this.locale;
+        console.log('ngOnChanges: locale='+ this.surveyModel.locale);    
+   }
 
     /*
   uploadFiles(_: any, options: { files: any[]; }) {
