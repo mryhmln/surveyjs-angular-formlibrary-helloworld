@@ -6,3 +6,30 @@ ul {
     display: inline-block;
     margin-right: 10px; /* add spacing between items */
   }
+
+  header {
+    color: #2B1A78
+  }
+
+  .button {
+    color: white;
+    margin-right: 10px;
+  }
+
+.header {
+    background-color: #003865
+    }
+
+.example {
+  background-color: #D13E00;
+  color: white;
+}
+
+.logo {
+  margin-left: 10px;
+  margin-right: 100px;
+}
+
+.menu-item {
+  margin-right: 10px; 
+}
